@@ -14,7 +14,7 @@ export const processPath = (path) => {
       parts.push(filename);
   }
   
-  if (parts[0] === 'local') {
+  if (parts[0] === 'local' || parts[0] === 'UNL-Problems') {
       parts.shift();
   }
   
