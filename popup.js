@@ -3,7 +3,7 @@ import { apiUrl } from './utils/envs.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const resultDiv = document.getElementById('result');
-  
+
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     const injectionResult = await chrome.scripting.executeScript({
@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     apiUrl.searchParams.append('format', 'json');
 
     const data = await fetchAPI(apiUrl);
-    
+
     resultDiv.innerHTML = `
       ${formatAnswers(data.answers)}
     `;
-    
+
     const viewProblemBtn = document.getElementById('viewProblem');
     viewProblemBtn.style.display = 'block';
 
