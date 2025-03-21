@@ -28,6 +28,27 @@ document.addEventListener('DOMContentLoaded', async () => {
       ${formatAnswers(data.answers)}
     `;
 
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', async (e) => {
+        const answer = e.target.dataset.answer;
+        const feedback = e.target.parentElement.nextElementSibling;
+        
+        try {
+          await navigator.clipboard.writeText(answer);
+          feedback.textContent = 'Copied!';
+          feedback.style.color = 'green';
+        } catch (err) {
+          feedback.textContent = 'Failed to copy';
+          feedback.style.color = 'red';
+          console.error('Copy failed:', err);
+        }
+        
+        setTimeout(() => {
+          feedback.textContent = '';
+        }, 2000);
+      });
+    });
+
     const viewProblemBtn = document.getElementById('viewProblem');
     viewProblemBtn.style.display = 'block';
 

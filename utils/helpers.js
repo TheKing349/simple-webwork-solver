@@ -32,9 +32,13 @@ export const fetchAPI = async (url) => {
 
 export const formatAnswers = (answers) => {
   if (!answers) return 'No answers found';
-  return Object.entries(answers).map(([_, data]) => `
+  
+  return Object.entries(answers).map(([questionId, data]) => `
     <div class="answer">
-      <h3><strong>Answer:</strong> ${data.correct_ans || 'N/A'}</h3>
+      <h3><strong>Answer:</strong> 
+        <span class="answer-text">${data.correct_ans || 'N/A'}</span>
+        <button class="copy-btn" data-answer="${data.correct_ans}">Copy Answer</button>
+      </h3>
     </div>
   `).join('');
 };
