@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    body {
+      min-width: 300px;
+    }
+    #viewProblem {
+      display: block;
+      margin: 0 auto;
+    }
+    #debugInfo {
+      margin-top: 15px;
+      text-align: center;
+    }
+    .answer-text {
+      flex-grow: 1;
+      min-width: min-content;
+    }
+
+    .copy-btn {
+      margin-bottom: 10px;
+      float:right;
+    }
+  </style>
   <body>
     <div id="result">Loading...</div>
     <button id="viewProblem" style="display: none; margin-top: 10px">
       Solution Walkthrough
     </button>
+    <div id="debugInfo"></div>
     <script src="utils/helpers.js" type="module"></script>
     <script src="popup.js" type="module"></script>
   </body>

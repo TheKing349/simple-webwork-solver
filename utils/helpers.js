@@ -35,7 +35,7 @@ export const formatAnswers = (answers) => {
 
   return Object.entries(answers)
     .map(
-      ([questionId, data]) => `
+      ([_, data]) => `
     <div class="answer">
       <h3><strong>Answer:</strong> 
         <span class="answer-text">${data.correct_ans || "N/A"}</span>

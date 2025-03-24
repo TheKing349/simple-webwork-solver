@@ -3,6 +3,7 @@ import { apiUrl } from "./utils/envs.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const resultDiv = document.getElementById("result");
+  const debugInfoDiv = document.getElementById("debugInfo");
 
   try {
     const [tab] = await chrome.tabs.query({
@@ -16,9 +17,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         randomSeed: document.querySelector('input[name="randomSeed"]')?.value,
       }),
     });
-
     let { problemPath, randomSeed } = injectionResult[0].result;
+
+    if (problemPath == undefined || randomSeed == undefined) {
+      resultDiv.innerHTML = `<div>Could not find path or seed. Ensure you are on a WeBWorK-compatible website.</div>`;
+      return;
+    }
     problemPath = processPath(problemPath);
+
+    debugInfoDiv.innerHTML = `<div>path: ${problemPath}</div><div>seed: ${randomSeed}</div>`;
 
     apiUrl.searchParams.append("problemSeed", randomSeed);
     apiUrl.searchParams.append("sourceFilePath", problemPath);
@@ -62,6 +69,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       chrome.tabs.create({ url: apiUrl.toString() });
     });
   } catch (error) {
-    resultDiv.innerHTML = `<div class="error">${error.message}</div>`;
+    resultDiv.innerHTML = `<div>${error.message}</div>`;
   }
 });
