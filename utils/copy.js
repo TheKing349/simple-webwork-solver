@@ -1,8 +1,10 @@
-document.addEventListener('click', (event) => {
-  if (event.target.tagName === 'SPAN') {
-    copyToClipboard(event.target);
-  }
-});
+export function initCopy() {
+  document.addEventListener('click', (event) => {
+    if (event.target.tagName === 'SPAN') {
+      copyToClipboard(event.target);
+    }
+  });
+}
 
 function copyToClipboard(spanElement) {
   const text = spanElement.textContent;

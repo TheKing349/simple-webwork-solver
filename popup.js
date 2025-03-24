@@ -1,7 +1,12 @@
 import { fetchAPI, processPath, formatAnswers } from "./utils/helpers.js";
 import { apiUrl } from "./utils/envs.js";
+import { initTheme } from "./utils/theme.js";
+import { initCopy } from "./utils/copy.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  initTheme();
+  initCopy();
+
   const resultDiv = document.getElementById("result");
   const debugInfoDiv = document.getElementById("debugInfo");
 
