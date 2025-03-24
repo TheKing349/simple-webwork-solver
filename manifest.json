@@ -6,7 +6,9 @@
     "activeTab",
     "scripting",
     "tabs",
-    "clipboardWrite",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
     "[URL_HERE]/*"
   ],
   "action": {

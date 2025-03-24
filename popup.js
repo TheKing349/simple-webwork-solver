@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     problemPath = processPath(problemPath);
 
-    debugInfoDiv.innerHTML = `<span>path: ${problemPath}<br>seed: ${randomSeed}</span>`;
+    debugInfoDiv.innerHTML = `path: <span>${problemPath}</span><br>seed: <span>${randomSeed}</span>`;
     const debugInfoBtn = document.getElementById("debugInfoBtn");
     let isActive = false;
 
@@ -46,22 +46,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     resultDiv.innerHTML = `
       ${formatAnswers(data.answers)}
     `;
-
-    document.querySelectorAll(".answer-text").forEach((button) => {
-      button.addEventListener("click", async (e) => {
-        const answer = e.target.innerText;
-
-        try {
-          await navigator.clipboard.writeText(answer);
-        } catch (err) {
-          console.error("Copy failed:", err);
-        }
-
-        setTimeout(() => {
-          feedback.textContent = "";
-        }, 2000);
-      });
-    });
 
     const viewProblemBtn = document.getElementById("viewProblem");
     viewProblemBtn.style.display = "block";

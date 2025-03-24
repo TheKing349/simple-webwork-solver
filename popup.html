@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
-<style>
-  body {
-    min-width: 200px;
-  }
 
-  #viewProblem,
-  #debugInfoBtn {
-    display: block;
-    margin: 10px auto;
-  }
-
-  #debugInfo {
-    margin-top: 15px;
-    text-align: center;
-  }
-
-  .answer-text {
-    flex-grow: 1;
-    min-width: min-content;
-    cursor: pointer;
-    text-decoration: underline;
-    color: blue;
-  }
-</style>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 
 <body>
-  <div id="result">Loading...</div>
-  <button id="viewProblem" style="display: none; margin-top: 10px">
-    Solution Walkthrough
+  <button id="themeToggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
   </button>
-  <button id="debugInfoBtn">Show Debug Info</button>
-  <div id="debugInfo" style="display: none;"></div>
-  <script src="utils/helpers.js" type="module"></script>
+  <div class="container">
+    <h3>WeBWorK Solver</h3>
+    <div id="result">
+      <i class="fas fa-spinner loading-spinner"></i>
+      Loading...
+    </div>
+    <button id="viewProblem">
+      <i class="fas fa-graduation-cap"></i>
+      Solution Walkthrough
+    </button>
+    <button id="debugInfoBtn">
+      <i class="fas fa-bug"></i>
+      Show Debug Info
+    </button>
+    <div id="debugInfo">
+      <div class="debug-header">
+        <i class="fas fa-info-circle"></i>
+        <strong>Debug Information</strong>
+      </div>
+      <div class="debug-content"></div>
+    </div>
+  </div>
+
+  <script src="utils/theme.js"></script>
+  <script src="utils/copy.js"></script>
   <script src="popup.js" type="module"></script>
+  <script src="utils/helpers.js" type="module"></script>
 </body>
 
 </html>
