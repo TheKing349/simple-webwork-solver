@@ -39,9 +39,6 @@ export const formatAnswers = (answers) => {
     <div class="answer">
       <h3><strong>Answer:</strong> 
         <span class="answer-text">${data.correct_ans || "N/A"}</span>
-        <button class="copy-btn" data-answer="${
-          data.correct_ans
-        }">Copy Answer</button>
       </h3>
     </div>
   `

@@ -25,7 +25,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     problemPath = processPath(problemPath);
 
-    debugInfoDiv.innerHTML = `<div>path: ${problemPath}</div><div>seed: ${randomSeed}</div>`;
+    debugInfoDiv.innerHTML = `<span>path: ${problemPath}<br>seed: ${randomSeed}</span>`;
+    const debugInfoBtn = document.getElementById("debugInfoBtn");
+    let isActive = false;
+
+    debugInfoBtn.addEventListener("click", () => {
+      isActive = !isActive;
+      const debugInfo = document.getElementById("debugInfo");
+      debugInfo.style.display = isActive ? "block" : "none";
+      debugInfoBtn.innerText = isActive ? "Hide Debug Info" : "Show Debug Info";
+    });
 
     apiUrl.searchParams.append("problemSeed", randomSeed);
     apiUrl.searchParams.append("sourceFilePath", problemPath);
@@ -38,18 +47,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       ${formatAnswers(data.answers)}
     `;
 
-    document.querySelectorAll(".copy-btn").forEach((button) => {
+    document.querySelectorAll(".answer-text").forEach((button) => {
       button.addEventListener("click", async (e) => {
-        const answer = e.target.dataset.answer;
-        const feedback = e.target.parentElement.nextElementSibling;
+        const answer = e.target.innerText;
 
         try {
           await navigator.clipboard.writeText(answer);
-          feedback.textContent = "Copied!";
-          feedback.style.color = "green";
         } catch (err) {
-          feedback.textContent = "Failed to copy";
-          feedback.style.color = "red";
           console.error("Copy failed:", err);
         }
 
