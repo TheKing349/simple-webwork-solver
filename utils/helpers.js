@@ -1,25 +1,25 @@
 export const processPath = (path) => {
-  const parts = path.split('/');
+  const parts = path.split("/");
 
   if (parts.length > 0) {
     let filename = parts.pop();
-    const lastDotIndex = filename.lastIndexOf('.');
+    const lastDotIndex = filename.lastIndexOf(".");
     if (lastDotIndex !== -1) {
-      const name = filename.substring(0, lastDotIndex).replace(/-\d+$/, '');
+      const name = filename.substring(0, lastDotIndex).replace(/-\d+$/, "");
       const extension = filename.substring(lastDotIndex + 1);
-      filename = name + '.' + extension;
+      filename = name + "." + extension;
     } else {
-      filename = filename.replace(/-\d+$/, '');
+      filename = filename.replace(/-\d+$/, "");
     }
     parts.push(filename);
   }
 
-  if (parts[0] === 'local' || parts[0] === 'UNL-Problems') {
+  if (parts[0] === "local" || parts[0] === "UNL-Problems") {
     parts.shift();
   }
 
-  return parts.join('/');
-}
+  return parts.join("/");
+};
 
 export const fetchAPI = async (url) => {
   try {
@@ -31,14 +31,20 @@ export const fetchAPI = async (url) => {
 };
 
 export const formatAnswers = (answers) => {
-  if (!answers) return 'No answers found';
-  
-  return Object.entries(answers).map(([questionId, data]) => `
+  if (!answers) return "No answers found";
+
+  return Object.entries(answers)
+    .map(
+      ([questionId, data]) => `
     <div class="answer">
       <h3><strong>Answer:</strong> 
-        <span class="answer-text">${data.correct_ans || 'N/A'}</span>
-        <button class="copy-btn" data-answer="${data.correct_ans}">Copy Answer</button>
+        <span class="answer-text">${data.correct_ans || "N/A"}</span>
+        <button class="copy-btn" data-answer="${
+          data.correct_ans
+        }">Copy Answer</button>
       </h3>
     </div>
-  `).join('');
+  `
+    )
+    .join("");
 };
