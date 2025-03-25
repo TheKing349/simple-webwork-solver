@@ -1,25 +1,12 @@
 export const processPath = (path) => {
-  const parts = path.split("/");
-
-  if (parts.length > 0) {
-    let filename = parts.pop();
-    const lastDotIndex = filename.lastIndexOf(".");
-    if (lastDotIndex !== -1) {
-      const name = filename.substring(0, lastDotIndex).replace(/-\d+$/, "");
-      const extension = filename.substring(lastDotIndex + 1);
-      filename = name + "." + extension;
-    } else {
-      filename = filename.replace(/-\d+$/, "");
-    }
-    parts.push(filename);
-  }
-
-  if (parts[0] === "local" || parts[0] === "UNL-Problems") {
-    parts.shift();
-  }
-
-  return parts.join("/");
+  const index = path.indexOf("Library");
+  let processedPath = index !== -1 ? path.substring(index) : path;
+  return removeNumberSuffix(processedPath);
 };
+
+function removeNumberSuffix(str) {
+  return str.replace(/-\d{1,2}/g, ''); 
+}
 
 export const fetchAPI = async (url) => {
   try {
