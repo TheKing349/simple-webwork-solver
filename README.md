@@ -4,22 +4,16 @@
 
 *Disclaimer: This tool is intended for educational purposes only. Users are responsible for adhering to their institution's academic integrity policies. We do not condone unethical use of this extension.*
 
----
-
 ## Key Features
 - **Automated Answer Extraction**: Retrieves verified answers directly from WeBWorK problems
 - **Step-by-Step Solutions**: Displays detailed solution pathways to enhance understanding
 - **Open-Source Integration**: Leverages the official [WeBWorK OpenProblemLibrary](https://github.com/openwebwork/webwork-open-problem-library/tree/main/OpenProblemLibrary)
-
----
 
 ## Technical Overview
 The extension identifies unique problem identifiers (path/seed) from your WeBWorK assignment and communicates with a WeBWorK Renderer API. By analyzing the returned JSON data structure, it extracts both final answers and solution methodologies.
 
 *Required Infrastructure:*  
 - [WeBWorK Renderer](https://github.com/openwebwork/renderer) API endpoint (self-hosted)
-
----
 
 ## Installation Guide
 
@@ -53,8 +47,6 @@ CORS_ORIGIN = '*' # Keep this setting
 2. Enable **Developer Mode** (top-right toggle)
 3. Click **Load Unpacked** and select the extension directory
 
----
-
 ## Usage Instructions
 1. Navigate to any WeBWorK assignment page
 2. Click the extension icon to activate
@@ -62,16 +54,12 @@ CORS_ORIGIN = '*' # Keep this setting
 	- **Instant Answer** (Direct result)
 	- **Solution Walkthrough** (step-by-step process)
 
----
-
 ## Contributions Welcome
 We actively encourage community participation in developing this open-source tool. Meaningful contributions come in many forms:
 - **Issue Reporting**: Found a bug? [Create an issue](https://github.com/TheKing349/simple-webwork-solver/issues/new/choose) with detailed reproduction steps
 - **Feature Proposals**: Have an improvement idea? Start a GitHub discussion first
 - **Documentation**: Help improve documentation clarity or translate materials
 - **Code Contributions**: Submit pull requests for bug fixes or approved features
-
----
 
 ## Support & Troubleshooting
 Ensure your renderer instance is properly exposed to the internet and CORS policies are configured. For issues, verify:
