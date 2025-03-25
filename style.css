@@ -5,7 +5,6 @@
   --button-hover: #e0e0e0;
   --border-color: #ddd;
   --accent-color: #c0deff;
-  ;
 }
 
 [data-theme="dark"] {
@@ -141,8 +140,8 @@ span.copied::before {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #333;
-  color: #fff;
+  background: var(--text-color);
+  color: var(--bg-color);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
