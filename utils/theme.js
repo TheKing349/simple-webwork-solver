@@ -7,8 +7,8 @@ export function initTheme() {
     body.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     themeIcon.className = theme === 'dark'
-      ? 'fas fa-sun fa-icon'
-      : 'fas fa-moon fa-icon';
+      ? 'fas fa-moon fa-icon'
+      : 'fas fa-sun fa-icon';
     themeToggle.setAttribute('aria-label', `${theme} mode`);
   }
 
