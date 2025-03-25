@@ -10,7 +10,7 @@
 - **Open-Source Integration**: Leverages the official [WeBWorK OpenProblemLibrary](https://github.com/openwebwork/webwork-open-problem-library/tree/main/OpenProblemLibrary)
 
 ## Technical Overview
-The extension identifies unique problem identifiers (path/seed) from your WeBWorK assignment and communicates with a WeBWorK Renderer API. By analyzing the returned JSON data structure, it extracts both final answers and solution methodologies.
+The extension identifies unique problem identifiers (path/seed) from your WeBWorK assignment and communicates with a WeBWorK Renderer API. By analyzing the returned JSON data structure, it extracts both final answers and solution steps.
 
 *Required Infrastructure:*  
 - [WeBWorK Renderer](https://github.com/openwebwork/renderer) API endpoint (self-hosted)
@@ -28,7 +28,7 @@ Option B - Download ZIP
 ### 2. Configure Renderer API
 1. Deploy the WeBWorK Renderer following [official documentation](https://github.com/openwebwork/renderer)
 2. Ensure public internet accessibility
-3. Configure [renderer-api.conf](https://github.com/openwebwork/renderer/blob/main/render_app.conf.dist)(add a mount for this if using docker):
+3. Configure [renderer-api.conf](https://github.com/openwebwork/renderer/blob/main/render_app.conf.dist) (add a mount for this if using docker):
 ```conf
 ...
 SITE_HOST = 'your_public_url_here'
@@ -40,7 +40,8 @@ CORS_ORIGIN = '*' # Keep this setting
 1. Update API endpoints in:
 	- `manifest.json`
 	- `utils/envs.js`
-	Replace `[URL_HERE]` with your renderer URL(e.g., `your-renderer-domain.com:3000`). Preserve the `/render-api` path on `utils/envs.js`
+	
+ 	Replace `[URL_HERE]` with your renderer URL(e.g., `your-renderer-domain.com:3000`). Preserve the `/render-api` path on `utils/envs.js`
 
 ### 4. Chrome Installation
 1. Navigate to `chrome://extension`
@@ -51,7 +52,7 @@ CORS_ORIGIN = '*' # Keep this setting
 1. Navigate to any WeBWorK assignment page
 2. Click the extension icon to activate
 3. Select between:
-	- **Instant Answer** (Direct result)
+	- **View and/or Copy Answer** (Direct result)
 	- **Solution Walkthrough** (step-by-step process)
 
 ## Contributions Welcome
