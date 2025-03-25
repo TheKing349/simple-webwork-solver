@@ -48,6 +48,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const data = await fetchAPI(apiUrl);
 
+    if (data.flags.error_flag === 1) {
+      resultDiv.innerHTML = `
+        <div>Could not load results. This could be due to a broken .pg file.</div>
+      `;
+      return;
+    }
+
     resultDiv.innerHTML = `
       ${formatAnswers(data.answers)}
     `;

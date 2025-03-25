@@ -5,7 +5,7 @@ export const processPath = (path) => {
 };
 
 function removeNumberSuffix(str) {
-  return str.replace(/-\d{1,2}/g, ''); 
+  return str.replace(/-(\d+)\.pg$/, '.pg');
 }
 
 export const fetchAPI = async (url) => {
@@ -23,12 +23,12 @@ export const formatAnswers = (answers) => {
   return Object.entries(answers)
     .map(
       ([_, data]) => `
-    <div>
-      <h3><strong>Answer:</strong> 
-        <span>${data.correct_ans || "N/A"}</span>
-      </h3>
-    </div>
-  `
+        <div>
+          <h3><strong>Answer:</strong> 
+            <span>${data.correct_ans || "N/A"}</span>
+          </h3>
+        </div>
+      `
     )
     .join("");
 };
