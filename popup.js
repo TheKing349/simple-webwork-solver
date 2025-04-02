@@ -41,8 +41,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       debugInfoBtn.innerText = isActive ? "Hide Debug Info" : "Show Debug Info";
     });
 
+    const viewProblemBtn = document.getElementById("viewProblem");
+    viewProblemBtn.style.display = "block";
+
+    viewProblemBtn.addEventListener("click", () => {
+      apiUrl.searchParams.delete("format");
+      apiUrl.searchParams.append("format", "html");
+
+      chrome.tabs.create({ url: apiUrl.toString() });
+    });
+
     apiUrl.searchParams.append("problemSeed", randomSeed);
     apiUrl.searchParams.append("sourceFilePath", problemPath);
+    apiUrl.searchParams.append("displayMode", "MathJax");
     apiUrl.searchParams.append("showSolutions", "1");
     apiUrl.searchParams.append("format", "json");
 
@@ -58,16 +69,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     resultDiv.innerHTML = `
       ${formatAnswers(data.answers)}
     `;
-
-    const viewProblemBtn = document.getElementById("viewProblem");
-    viewProblemBtn.style.display = "block";
-
-    viewProblemBtn.addEventListener("click", () => {
-      apiUrl.searchParams.delete("format");
-      apiUrl.searchParams.append("format", "html");
-
-      chrome.tabs.create({ url: apiUrl.toString() });
-    });
   } catch (error) {
     resultDiv.innerHTML = `<div>${error.message}</div>`;
   }
