@@ -10,7 +10,7 @@
     "clipboardWrite"
   ],
   "host_permissions": [
-    "[URL_HERE]/*"
+    "https://wwrenderer-staging.libretexts.org/*"
   ],
   "action": {
     "default_popup": "popup.html",

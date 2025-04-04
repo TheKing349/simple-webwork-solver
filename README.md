@@ -25,7 +25,7 @@ git clone https://github.com/TheKing349/simple-webwork-solver.git
 Option B - Download ZIP
 [Download Latest Release](https://github.com/TheKing349/simple-webwork-solver/archive/refs/heads/main.zip)
 
-### 2. Configure Renderer API
+### 2. Configure Renderer API (Only if using Custom WeBWorK Renderer)
 1. Deploy the WeBWorK Renderer following [official documentation](https://github.com/openwebwork/renderer)
 2. Ensure public internet accessibility
 3. Configure [renderer-api.conf](https://github.com/openwebwork/renderer/blob/main/render_app.conf.dist) (add a mount for this if using docker):
@@ -36,14 +36,13 @@ CORS_ORIGIN = '*' # Keep this setting
 ...
 ```
 
-### 3. Extension Configuration
-1. Update API endpoints in:
+4. Update API endpoints in:
 	- `manifest.json`
 	- `utils/envs.js`
 	
- 	Replace `[URL_HERE]` with your renderer URL(e.g., `your-renderer-domain.com:3000`). Preserve the `/render-api` path on `utils/envs.js`
+Replace `[URL_HERE]` with your renderer URL(e.g., `your-renderer-domain.com:3000`). Preserve the `/render-api` path on `utils/envs.js`
 
-### 4. Chrome Installation
+### 3. Chrome Installation
 1. Navigate to `chrome://extension`
 2. Enable **Developer Mode** (top-right toggle)
 3. Click **Load Unpacked** and select the extension directory

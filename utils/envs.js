@@ -1,1 +1,1 @@
-export const apiUrl = new URL('[URL_HERE]/render-api');
+export const apiUrl = new URL('https://wwrenderer-staging.libretexts.org/render-api');
